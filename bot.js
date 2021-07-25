@@ -73,6 +73,63 @@ async function whatsAsena () {
     conn.version = [2,2121,7];
     const Session = new StringSession();
 
+    //================Set Daily Annoicement================
+
+    setInterval(async () => { 
+        var getGMTh = new Date().getHours()
+        var getGMTm = new Date().getMinutes()
+        await axios.get('https://gist.githubusercontent.com/phaticusthiccy/d0d1855bd0098d773759b4f3345bd292/raw/').then(async (ann) => {
+            const { infotr, infoen, infoes, infopt, infoid, infoaz, infohi, infoml, inforu} = ann.data.announcements          
+            if (infotr !== '' && config.LANG == 'TR') {
+                while (getGMTh == 19 && getGMTm == 1) { 
+                    return conn.sendMessage(conn.user.jid, '[ ```Günlük Duyurular``` ]\n\n' + infotr.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+                }
+            }
+            else if (infoaz !== '' && config.LANG == 'AZ') {
+                while (getGMTh == 19 && getGMTm == 1) { 
+                    return conn.sendMessage(conn.user.jid, '[ ```Gündəlik Elanlar``` ]\n\n' + infoaz.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+                }
+            }
+            else if (infoes !== '' && config.LANG == 'ES') {
+                while (getGMTh == 18 && getGMTm == 1) { 
+                    return conn.sendMessage(conn.user.jid, '[ ```Anuncios Diarios``` ]\n\n' + infoes.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+                }
+            }
+            else if (infoen !== '' && config.LANG == 'EN') {
+                while (getGMTh == 19 && getGMTm == 1) { 
+                    return conn.sendMessage(conn.user.jid, '[ ```Daily Announcements``` ]\n\n' + infoen.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+                }
+            }
+            else if (infohi !== '' && config.LANG == 'HI') {
+                while (getGMTh == 21 && getGMTm == 31) { 
+                    return conn.sendMessage(conn.user.jid, '[ ```दैनिक घोषणाएं``` ]\n\n' + infohi.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+                }
+            }
+            else if (infoml !== '' && config.LANG == 'ML') {
+                while (getGMTh == 19 && getGMTm == 1) { 
+                    return conn.sendMessage(conn.user.jid, '[ ```പ്രതിദിന പ്രഖ്യാപനങ്ങൾ``` ]\n\n' + infoml.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+                }
+            }
+            else if (infoid !== '' && config.LANG == 'ID') {
+                while (getGMTh == 23 && getGMTm == 1) { 
+                    return conn.sendMessage(conn.user.jid, '[ ```Pengumuman Harian``` ]\n\n' + infoid.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+                }
+            }
+            else if (inforu !== '' && config.LANG == 'RU') {
+                while (getGMTh == 19 && getGMTm == 1) { 
+                    return conn.sendMessage(conn.user.jid, '[ ```Ежедневные объявления``` ]\n\n' + inforu.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+                }
+            }
+            else if (infopt !== '' && config.LANG == 'PT') {
+                while (getGMTh == 17 && getGMTm == 1) { 
+                    return conn.sendMessage(conn.user.jid, '[ ```Anúncios Diários``` ]\n\n' + infopt.replace('{user}', conn.user.name).replace('{wa_version}', conn.user.phone.wa_version).replace('{version}', config.VERSION).replace('{os_version}', conn.user.phone.os_version).replace('{device_model}', conn.user.phone.device_model).replace('{device_brand}', conn.user.phone.device_manufacturer), MessageType.text) 
+                }
+            }
+        })
+    }, 50000);
+
+    //===================End Datily Annousement==========================
+
     conn.logger.level = config.DEBUG ? 'debug' : 'warn';
     var nodb;
 
@@ -136,10 +193,188 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please wait.')}`);
         });
 
         console.log(
-            chalk.green.bold('Julie Mwol working! 😍')
+            chalk.green.bold('Akina working! 😍')
         );
     });
+
+    //================New=============
+
+    if (config.WORKTYPE == 'public') {
+      
+        if (config.LANG == 'TR' || config.LANG == 'AZ') {
+            if (config.FULLEVA == 'true') {
+                await conn.sendMessage(conn.user.jid, EVA_ACTİON, MessageType.text)
+            } else {
+                await conn.sendMessage(conn.user.jid, '*Akina  public ආකාරයට ක්‍රියාකිරිම ආරම්භ විය.👸*\n\n_කරුණාකර මෙහි command උත්සාහ නොකරන්න. මෙය ඔබගේ ලොග් අංකයයි.\n_ඔබට ඕනෑම චැට් එකක විධාන උත්සාහ කළ හැකිය :)_\n\n_ඔබේ command list එක ලබාගැනීමට_ *.akina* _command එක භාවිතා කරන්න_\n\n_ඔබේ bot public ක්‍රියාත්මක වේ. වෙනස් කිරීමට_ ```.setvar WORK_TYPE:private``` _විධානය භාවිතා කරන්න._\n\n*Akina භාවිතා කිරීම ගැන ස්තූතියි 💌*', MessageType.text);
+            }
+            await git.fetch();
+            var commits = await git.log([config.BRANCH + '..origin/' + config.BRANCH]);
+            if (commits.total === 0) {
+                await conn.sendMessage(
+                    conn.user.jid,
+                    Lang.UPDATE, MessageType.text
+                );    
+            } else {
+                var degisiklikler = Lang.NEW_UPDATE;
+                commits['all'].map(
+                    (commit) => {
+                        degisiklikler += '🔸 [' + commit.date.substring(0, 10) + ']: ' + commit.message + ' <' + commit.author_name + '>\n';
+                    }
+                );
+                await conn.sendMessage(
+                    conn.user.jid,
+                    '```යාවත්කාලීන කිරීමට``` *.update now* ```යොදන්න .```\n\n' + degisiklikler + '```', MessageType.text
+                ); 
+            }
+        }
+        else { 
+            if (config.FULLEVA == 'true') {
+                await conn.sendMessage(conn.user.jid, EVA_ACTİON, MessageType.text)
+            } else {
+                await conn.sendMessage(conn.user.jid, '*Akina  public ආකාරයට ක්‍රියාකිරිම ආරම්භ විය.👸*\n\n_කරුණාකර මෙහි command උත්සාහ නොකරන්න. මෙය ඔබගේ ලොග් අංකයයි.\n_ඔබට ඕනෑම චැට් එකක විධාන උත්සාහ කළ හැකිය :)_\n\n_ඔබේ command list එක ලබාගැනීමට_ *.akina* _command එක භාවිතා කරන්න_\n\n_ඔබේ bot public ක්‍රියාත්මක වේ. වෙනස් කිරීමට_ ```.setvar WORK_TYPE:private``` _විධානය භාවිතා කරන්න._\n\n*Akina භාවිතා කිරීම ගැන ස්තූතියි 💌*', MessageType.text);
+            }               
+            await git.fetch();
+            var commits = await git.log([config.BRANCH + '..origin/' + config.BRANCH]);
+            if (commits.total === 0) {
+                await conn.sendMessage(
+                    conn.user.jid,
+                    Lang.UPDATE, MessageType.text
+                );    
+            } else {
+                var degisiklikler = Lang.NEW_UPDATE;
+                commits['all'].map(
+                    (commit) => {
+                        degisiklikler += '🔸 [' + commit.date.substring(0, 10) + ']: ' + commit.message + ' <' + commit.author_name + '>\n';
+                    }
+                );
     
+                await conn.sendMessage(
+                    conn.user.jid,
+                    '```Type``` *.update now* ```For Update The Bot.```\n\n' + degisiklikler + '```', MessageType.text
+                ); 
+            }
+        }
+    }
+    else if (config.WORKTYPE == 'private') { 
+        if (config.LANG == 'TR' || config.LANG == 'AZ') { 
+            if (config.FULLEVA == 'true') {
+                await conn.sendMessage(conn.user.jid, EVA_ACTİON, MessageType.text)
+            } else {
+                await conn.sendMessage(conn.user.jid, '*Akina  private ආකාරයට ක්‍රියාකිරිම ආරම්භ විය.👸*\n\n_කරුණාකර මෙහි command උත්සාහ නොකරන්න. මෙය ඔබගේ ලොග් අංකයයි.\n_ඔබට ඕනෑම චැට් එකක විධාන උත්සාහ කළ හැකිය :)_\n\n_ඔබේ command list එක ලබාගැනීමට_ *.akina* _command එක භාවිතා කරන්න_\n\n_ඔබේ bot public ක්‍රියාත්මක වේ. වෙනස් කිරීමට_ ```.setvar WORK_TYPE:public``` _විධානය භාවිතා කරන්න._\n\n*Akina භාවිතා කිරීම ගැන ස්තූතියි 💌*', MessageType.text);
+            }
+            await git.fetch();
+            var commits = await git.log([config.BRANCH + '..origin/' + config.BRANCH]);
+            if (commits.total === 0) {
+                await conn.sendMessage(
+                    conn.user.jid,
+                    Lang.UPDATE, MessageType.text
+                );    
+            } else {
+                var degisiklikler = Lang.NEW_UPDATE;
+                commits['all'].map(
+                    (commit) => {
+                        degisiklikler += '🔸 [' + commit.date.substring(0, 10) + ']: ' + commit.message + ' <' + commit.author_name + '>\n';
+                    }
+                );
+                await conn.sendMessage(
+                    conn.user.jid,
+                    '```යාවත්කාලීන කිරීමට``` *.update now* ```යොදන්න.```\n\n' + degisiklikler + '```', MessageType.text
+                ); 
+            }
+        }
+        else { 
+            if (config.FULLEVA == 'true') {
+                await conn.sendMessage(conn.user.jid, EVA_ACTİON, MessageType.text)
+            } else {
+                await conn.sendMessage(conn.user.jid, '*Akina  private ආකාරයට ක්‍රියාකිරිම ආරම්භ විය.👸*\n\n_කරුණාකර මෙහි command උත්සාහ නොකරන්න. මෙය ඔබගේ ලොග් අංකයයි.\n_ඔබට ඕනෑම චැට් එකක විධාන උත්සාහ කළ හැකිය :)_\n\n_ඔබේ command list එක ලබාගැනීමට_ *.akina* _command එක භාවිතා කරන්න_\n\n_ඔබේ bot public ක්‍රියාත්මක වේ. වෙනස් කිරීමට_ ```.setvar WORK_TYPE:public``` _විධානය භාවිතා කරන්න._\n\n*Akina භාවිතා කිරීම ගැන ස්තූතියි 💌*', MessageType.text);
+            }
+            await git.fetch();
+            var commits = await git.log([config.BRANCH + '..origin/' + config.BRANCH]);
+            if (commits.total === 0) {
+                await conn.sendMessage(
+                    conn.user.jid,
+                    Lang.UPDATE, MessageType.text
+                );    
+            } else {
+                var degisiklikler = Lang.NEW_UPDATE;
+                commits['all'].map(
+                    (commit) => {
+                        degisiklikler += '🔸 [' + commit.date.substring(0, 10) + ']: ' + commit.message + ' <' + commit.author_name + '>\n';
+                    }
+                );
+                await conn.sendMessage(
+                    conn.user.jid,
+                    '```Type``` *.update now* ```For The Update Bot.```\n\n' + degisiklikler + '```', MessageType.text
+                ); 
+            }
+        }
+    }
+    else if (config.WORKTYPE == ' private' || config.WORKTYPE == 'Private' || config.WORKTYPE == ' Private' || config.WORKTYPE == 'privaye' || config.WORKTYPE == ' privaye' || config.WORKTYPE == ' prigate' || config.WORKTYPE == 'prigate' || config.WORKTYPE == 'priavte' || config.WORKTYPE == ' priavte' || config.WORKTYPE == 'PRİVATE' || config.WORKTYPE == ' PRİVATE' || config.WORKTYPE == 'PRIVATE' || config.WORKTYPE == ' PRIVATE') {
+
+        if (config.LANG == 'TR' || config.LANG == 'AZ') {
+
+            await conn.sendMessage(
+                conn.user.jid,
+                '_ඔබට bot private කිරීමට අවශ්‍ය බව පෙනේ නමුත් ඔබ *WORK_TYPE* වැරදියට Type කර බව පෙනේ නැවත වරක් උත්සහ කරන්න._', MessageType.text
+            );
+            await heroku.patch(baseURI + '/config-vars', {
+                body: {
+                    ['WORK_TYPE']: 'private'
+                }
+            })
+        }
+        else {
+            await conn.sendMessage(
+                conn.user.jid,
+                '_ඔබට bot private කිරීමට අවශ්‍ය බව පෙනේ නමුත් ඔබ *WORK_TYPE* වැරදියට Type කර බව පෙනේ නැවත වරක් උත්සහ කරන්න._', MessageType.text
+            );
+            await heroku.patch(baseURI + '/config-vars', {
+                body: {
+                    ['WORK_TYPE']: 'private'
+                }
+            })
+        }
+    }
+    else if (config.WORKTYPE == ' public' || config.WORKTYPE == 'Public' || config.WORKTYPE == ' Public' || config.WORKTYPE == 'publoc' || config.WORKTYPE == ' Publoc' || config.WORKTYPE == 'pubcli' || config.WORKTYPE == ' pubcli' || config.WORKTYPE == 'PUBLİC' || config.WORKTYPE == ' PUBLİC' || config.WORKTYPE == 'PUBLIC' || config.WORKTYPE == ' PUBLIC' || config.WORKTYPE == 'puvlic' || config.WORKTYPE == ' puvlic' || config.WORKTYPE == 'Puvlic' || config.WORKTYPE == ' Puvlic') {
+        if (config.LANG == 'TR' || config.LANG == 'AZ') {
+            await conn.sendMessage(
+                conn.user.jid,
+                '_ඔබට bot public කිරීමට අවශ්‍ය බව පෙනේ නමුත් ඔබ *WORK_TYPE* වැරදියට Type කර බව පෙනේ නැවත වරක් උත්සහ කරන්න._', MessageType.text
+            );
+            await heroku.patch(baseURI + '/config-vars', {
+                body: {
+                    ['WORK_TYPE']: 'public'
+                }
+            })
+        }
+        else {
+            await conn.sendMessage(
+                conn.user.jid,
+                '_ඔබට bot public කිරීමට අවශ්‍ය බව පෙනේ නමුත් ඔබ *WORK_TYPE* වැරදියට Type කර බව පෙනේ නැවත වරක් උත්සහ කරන්න._', MessageType.text
+            );
+            await heroku.patch(baseURI + '/config-vars', {
+                body: {
+                    ['WORK_TYPE']: 'public'
+                }
+            })
+        }
+    }
+    else {
+        if (config.LANG == 'TR' || config.LANG == 'AZ') {
+            return await conn.sendMessage(
+                conn.user.jid,
+                '_The_ *WORK_TYPE* _Key You Entered Was Not Found!_ \n_Please Type_ ```.setvar WORK_TYPE:private``` _Or_ ```.setvar WORK_TYPE:public', MessageType.text
+            );
+        }
+        else {
+            return await conn.sendMessage(
+                conn.user.jid,
+                '_The_ *WORK_TYPE* _Key You Entered Was Not Found!_ \n_Please Type_ ```.setvar WORK_TYPE:private``` _Or_ ```.setvar WORK_TYPE:public```', MessageType.text
+            );
+        }
+ }
+ //==============End new================
+ 
     conn.on('chat-update', async m => {
         if (!m.hasNewMessage) return;
         if (!m.messages && !m.count) return;
