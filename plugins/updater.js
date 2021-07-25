@@ -32,7 +32,7 @@ Asena.addCommand({pattern: 'up$', fromMe: true, desc: Lang.UPDATER_DESC}, (async
         var degisiklikler = Lang.NEW_UPDATE;
         commits['all'].map(
             (commit) => {
-                degisiklikler += '🔹 [' + commit.date.substring(0, 10) + ']: ' + commit.message + ' <' + commit.author_name + '>\n🛑 *රාත්‍රී 10 න් පසුව bot update කරන්න*';
+                degisiklikler += '🔹 [' + commit.date.substring(0, 10) + ']: ' + commit.message + ' <' + commit.author_name + '>\n';
             }
         );
         
