@@ -75,6 +75,12 @@
             "required": false,
             "value": "default"
         },
+           "LOGO_CP": {
+            "description": "logo name",
+            "required": false,
+            "value":"hi"
+            
+        },
         "BLOCK_CHAT": {
             "description": "බොට් වැඩ නොකරන චැට් එක තෝරන්න. Ex: 947xxxxxxxx && 947xxxxxxxx හෝ 947xxxxxxxx,947xxxxxxxx...",
             "required": false,
